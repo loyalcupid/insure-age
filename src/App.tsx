@@ -25,6 +25,19 @@ import {
   ExternalLink,
 } from 'lucide-react';
 
+const downloadApps = [
+  {
+    title: '뱅크다이어리 앱 다운로드',
+    androidUrl: 'https://play.google.com/store/apps/details?id=com.appg.bankdiary.client&hl=ko',
+    iphoneUrl: 'https://apps.apple.com/kr/app/%EB%B1%85%ED%81%AC%EB%8B%A4%EC%9D%B4%EC%96%B4%EB%A6%AC-%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%95%9C-%EB%B3%B4%ED%97%98%EA%B4%80%EB%A6%AC-%EB%B3%B4%ED%97%98%EC%B2%AD%EA%B5%AC/id1543640471',
+  },
+  {
+    title: '전문가용 앱 다운로드',
+    androidUrl: 'https://play.google.com/store/apps/details?id=com.appg.bankdiary.expert',
+    iphoneUrl: 'https://apps.apple.com/kr/app/%EB%B1%85%ED%81%AC%EB%8B%A4%EC%9D%B4%EC%96%B4%EB%A6%AC-%EB%B3%B4%ED%97%98-%EC%A0%84%EB%AC%B8%EA%B0%80%EC%9A%A9/id1543640453',
+  },
+];
+
 export default function App() {
   // 현재 기준일 (한국 시간 기준)
   const defaultRefDate = useMemo(() => {
@@ -138,44 +151,48 @@ export default function App() {
     <div className="min-h-screen bg-[#EEF2F4] text-slate-800 flex flex-col justify-between py-6 px-4 sm:px-6">
       <div className="w-full max-w-[480px] mx-auto">
         {/* 보험나이 계산기 제목 위: 앱 다운로드 탭 */}
-        <div className="mb-3.5">
-          <div className="bg-white/95 rounded-xl p-2 shadow-[0_1px_4px_rgba(0,0,0,0.03)] border border-slate-200/90 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
-            <div className="flex items-center gap-1.5 px-1 text-xs font-semibold text-slate-700">
-              <Smartphone className="w-3.5 h-3.5 text-teal-600 shrink-0" />
-              <span>뱅크다이어리 앱 다운로드</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <a
-                href="https://play.google.com/store/apps/details?id=com.appg.bankdiary.client&hl=ko"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 bg-slate-50 hover:bg-emerald-50 hover:text-emerald-800 border border-slate-200/80 hover:border-emerald-200 transition-colors group cursor-pointer"
-                title="안드로이드용 Google Play 다운로드"
-              >
-                {/* Android Icon SVG */}
-                <svg className="w-3.5 h-3.5 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0001s.4482-.9997.9993-.9997c.5516 0 .9997.4482.9997.9997s-.4481 1.0001-.9997 1.0001m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0001s.4482-.9997.9993-.9997c.5516 0 .9997.4482.9997.9997s-.4481 1.0001-.9997 1.0001m11.4045-6.02l1.9967-3.4583a.416.416 0 0 0-.1521-.5676.416.416 0 0 0-.5676.1521l-2.0223 3.503C15.5902 8.411 13.8562 8.125 12 8.125c-1.8562 0-3.5902.286-5.1362.8256L4.8415 5.4476a.416.416 0 0 0-.5676-.1521.416.416 0 0 0-.1521.5676l1.9967 3.4583C2.6889 11.1867.3432 14.6589 0 18.75h24c-.3432-4.0911-2.6889-7.5633-6.1185-9.4286" />
-                </svg>
-                <span>안드로이드용</span>
-                <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover:text-emerald-700" />
-              </a>
+        <div className="mb-3.5 space-y-2">
+          {downloadApps.map((app) => (
+            <div key={app.title} className="bg-white/95 rounded-xl p-2 shadow-[0_1px_4px_rgba(0,0,0,0.03)] border border-slate-200/90 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
+              <div className="flex items-center gap-1.5 px-1 text-xs font-semibold text-slate-700">
+                <Smartphone className="w-3.5 h-3.5 text-teal-600 shrink-0" />
+                <span>{app.title}</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <a
+                  href={app.androidUrl}
+                  aria-label={`${app.title} - 안드로이드용`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 bg-slate-50 hover:bg-emerald-50 hover:text-emerald-800 border border-slate-200/80 hover:border-emerald-200 transition-colors group cursor-pointer"
+                  title="안드로이드용 Google Play 다운로드"
+                >
+                  {/* Android Icon SVG */}
+                  <svg className="w-3.5 h-3.5 text-emerald-600 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0001s.4482-.9997.9993-.9997c.5516 0 .9997.4482.9997.9997s-.4481 1.0001-.9997 1.0001m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0001s.4482-.9997.9993-.9997c.5516 0 .9997.4482.9997.9997s-.4481 1.0001-.9997 1.0001m11.4045-6.02l1.9967-3.4583a.416.416 0 0 0-.1521-.5676.416.416 0 0 0-.5676.1521l-2.0223 3.503C15.5902 8.411 13.8562 8.125 12 8.125c-1.8562 0-3.5902.286-5.1362.8256L4.8415 5.4476a.416.416 0 0 0-.5676-.1521.416.416 0 0 0-.1521.5676l1.9967 3.4583C2.6889 11.1867.3432 14.6589 0 18.75h24c-.3432-4.0911-2.6889-7.5633-6.1185-9.4286" />
+                  </svg>
+                  <span>안드로이드용</span>
+                  <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover:text-emerald-700" />
+                </a>
 
-              <a
-                href="https://apps.apple.com/kr/app/%EB%B1%85%ED%81%AC%EB%8B%A4%EC%9D%B4%EC%96%B4%EB%A6%AC-%EC%8A%A4%EB%A7%88%ED%8A%B8%ED%95%9C-%EB%B3%B4%ED%97%98%EA%B4%80%EB%A6%AC-%EB%B3%B4%ED%97%98%EC%B2%AD%EA%B5%AC/id1543640471"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80 hover:border-slate-300 transition-colors group cursor-pointer"
-                title="아이폰용 App Store 다운로드"
-              >
-                {/* Apple Icon SVG */}
-                <svg className="w-3.5 h-3.5 text-slate-800 shrink-0" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.18c.63-.78 1.06-1.87.94-2.96-.92.04-2.07.62-2.73 1.4-.58.67-1.09 1.77-.96 2.84 1.03.08 2.11-.53 2.75-1.28" />
-                </svg>
-                <span>아이폰용</span>
-                <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover:text-slate-800" />
-              </a>
+                <a
+                  href={app.iphoneUrl}
+                  aria-label={`${app.title} - 아이폰용`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80 hover:border-slate-300 transition-colors group cursor-pointer"
+                  title="아이폰용 App Store 다운로드"
+                >
+                  {/* Apple Icon SVG */}
+                  <svg className="w-3.5 h-3.5 text-slate-800 shrink-0" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.18c.63-.78 1.06-1.87.94-2.96-.92.04-2.07.62-2.73 1.4-.58.67-1.09 1.77-.96 2.84 1.03.08 2.11-.53 2.75-1.28" />
+                  </svg>
+                  <span>아이폰용</span>
+                  <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover:text-slate-800" />
+                </a>
+              </div>
             </div>
-          </div>
+          ))}
         </div>
 
         {/* 상단 타이틀 */}
