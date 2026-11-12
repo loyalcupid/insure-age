@@ -23,6 +23,7 @@ import {
   HelpCircle,
   Smartphone,
   ExternalLink,
+  Cake,
 } from 'lucide-react';
 
 const downloadApps = [
@@ -148,13 +149,13 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-[#EEF2F4] text-slate-800 flex flex-col justify-between py-6 px-4 sm:px-6">
-      <div className="w-full max-w-[480px] mx-auto">
+    <div className="app-shell min-h-screen text-slate-800 flex flex-col justify-between py-6 sm:py-10 px-4 sm:px-6">
+      <main className="w-full max-w-[520px] mx-auto">
         {/* 보험나이 계산기 제목 위: 앱 다운로드 탭 */}
-        <div className="mb-3.5 space-y-2">
+        <div className="download-panel mb-8 overflow-hidden rounded-2xl border border-white bg-white/80 p-1.5">
           {downloadApps.map((app) => (
-            <div key={app.title} className="bg-white/95 rounded-xl p-2 shadow-[0_1px_4px_rgba(0,0,0,0.03)] border border-slate-200/90 flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-2">
-              <div className="flex items-center gap-1.5 px-1 text-xs font-semibold text-slate-700">
+            <div key={app.title} className="download-row rounded-xl p-2.5 flex flex-col min-[520px]:flex-row items-stretch min-[520px]:items-center justify-between gap-2.5">
+              <div className="flex items-center gap-1.5 text-[11px] font-semibold text-slate-600">
                 <Smartphone className="w-3.5 h-3.5 text-teal-600 shrink-0" />
                 <span>{app.title}</span>
               </div>
@@ -164,7 +165,7 @@ export default function App() {
                   aria-label={`${app.title} - 안드로이드용`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 bg-slate-50 hover:bg-emerald-50 hover:text-emerald-800 border border-slate-200/80 hover:border-emerald-200 transition-colors group cursor-pointer"
+                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1 px-2 py-2 rounded-lg text-[11px] whitespace-nowrap font-medium text-slate-700 bg-slate-50 hover:bg-emerald-50 hover:text-emerald-800 border border-slate-200/80 hover:border-emerald-200 transition-colors group cursor-pointer"
                   title="안드로이드용 Google Play 다운로드"
                 >
                   {/* Android Icon SVG */}
@@ -172,7 +173,7 @@ export default function App() {
                     <path d="M17.523 15.3414c-.5511 0-.9993-.4486-.9993-1.0001s.4482-.9997.9993-.9997c.5516 0 .9997.4482.9997.9997s-.4481 1.0001-.9997 1.0001m-11.046 0c-.5511 0-.9993-.4486-.9993-1.0001s.4482-.9997.9993-.9997c.5516 0 .9997.4482.9997.9997s-.4481 1.0001-.9997 1.0001m11.4045-6.02l1.9967-3.4583a.416.416 0 0 0-.1521-.5676.416.416 0 0 0-.5676.1521l-2.0223 3.503C15.5902 8.411 13.8562 8.125 12 8.125c-1.8562 0-3.5902.286-5.1362.8256L4.8415 5.4476a.416.416 0 0 0-.5676-.1521.416.416 0 0 0-.1521.5676l1.9967 3.4583C2.6889 11.1867.3432 14.6589 0 18.75h24c-.3432-4.0911-2.6889-7.5633-6.1185-9.4286" />
                   </svg>
                   <span>안드로이드용</span>
-                  <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover:text-emerald-700" />
+                  <ExternalLink className="hidden min-[380px]:block w-2.5 h-2.5 text-slate-400 group-hover:text-emerald-700" />
                 </a>
 
                 <a
@@ -180,7 +181,7 @@ export default function App() {
                   aria-label={`${app.title} - 아이폰용`}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80 hover:border-slate-300 transition-colors group cursor-pointer"
+                  className="flex-1 sm:flex-none inline-flex items-center justify-center gap-1 px-2 py-2 rounded-lg text-[11px] whitespace-nowrap font-medium text-slate-700 bg-slate-50 hover:bg-slate-100 hover:text-slate-900 border border-slate-200/80 hover:border-slate-300 transition-colors group cursor-pointer"
                   title="아이폰용 App Store 다운로드"
                 >
                   {/* Apple Icon SVG */}
@@ -188,7 +189,7 @@ export default function App() {
                     <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 4.18c.63-.78 1.06-1.87.94-2.96-.92.04-2.07.62-2.73 1.4-.58.67-1.09 1.77-.96 2.84 1.03.08 2.11-.53 2.75-1.28" />
                   </svg>
                   <span>아이폰용</span>
-                  <ExternalLink className="w-2.5 h-2.5 text-slate-400 group-hover:text-slate-800" />
+                  <ExternalLink className="hidden min-[380px]:block w-2.5 h-2.5 text-slate-400 group-hover:text-slate-800" />
                 </a>
               </div>
             </div>
@@ -196,38 +197,50 @@ export default function App() {
         </div>
 
         {/* 상단 타이틀 */}
-        <header className="mb-4 flex items-center justify-between">
-          <h1 className="text-[19px] font-bold text-[#1F3D3D] tracking-tight">
-            보험나이 계산기
-          </h1>
-          {/* 부가 유틸 버튼 (예시 채우기 / 초기화) */}
-          <div className="flex items-center gap-1.5 text-xs">
-            {inputVal ? (
-              <button
-                onClick={handleReset}
-                className="flex items-center gap-1 px-2.5 py-1 text-slate-500 hover:text-slate-800 bg-white/80 rounded-md border border-slate-200 shadow-2xs hover:bg-white transition-colors cursor-pointer"
-                title="입력 내용 지우기"
-              >
-                <RotateCcw className="w-3 h-3" />
-                지우기
-              </button>
-            ) : (
-              <button
-                onClick={() => handleQuickInput('19900620')}
-                className="flex items-center gap-1 px-2.5 py-1 text-teal-800 hover:text-teal-900 bg-teal-50/90 rounded-md border border-teal-200/80 shadow-2xs hover:bg-teal-100 transition-colors cursor-pointer font-medium"
-              >
-                <Sparkles className="w-3 h-3 text-teal-600" />
-                예시 19900620
-              </button>
-            )}
+        <header className="mb-6">
+          <div className="flex items-center gap-3">
+            <div className="title-icon flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#124F46] text-white" aria-hidden="true">
+              <ShieldCheck className="h-6 w-6" strokeWidth={1.7} />
+            </div>
+            <div>
+              <p className="mb-1 text-[10px] font-bold tracking-[0.18em] text-teal-700">BANK DIARY</p>
+              <h1 className="text-[24px] sm:text-[27px] leading-tight font-bold text-[#173F38] tracking-tight">
+                보험나이 계산기
+              </h1>
+            </div>
           </div>
+          <p className="mt-4 text-[13px] leading-relaxed text-slate-500">생년월일 하나로 보험나이와 상령일을 한눈에.</p>
         </header>
 
         {/* 첫 번째 카드: 입력 카드 */}
-        <div className="bg-white rounded-2xl p-6 shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-slate-100 transition-all">
+        <section className="surface-card rounded-3xl p-5 sm:p-6" aria-label="생년월일 및 기준일 입력">
+          <div className="mb-5 flex flex-wrap items-center justify-between gap-2">
+            <span className="flex items-center gap-2 text-[11px] font-semibold text-teal-800"><span className="flex h-5 w-5 items-center justify-center rounded-md bg-teal-50 text-[10px]">01</span> 생년월일 입력</span>
+            {/* 부가 유틸 버튼 (예시 채우기 / 초기화) */}
+            <div className="flex items-center gap-1.5 text-xs">
+              {inputVal ? (
+                <button
+                  onClick={handleReset}
+                  className="flex items-center gap-1 px-2.5 py-1.5 text-slate-500 hover:text-teal-800 rounded-lg hover:bg-teal-50 transition-colors cursor-pointer"
+                  title="입력 내용 지우기"
+                >
+                  <RotateCcw className="w-3 h-3" />
+                  지우기
+                </button>
+              ) : (
+                <button
+                  onClick={() => handleQuickInput('19900620')}
+                  className="flex items-center gap-1 px-2.5 py-1.5 text-teal-700 hover:text-teal-900 bg-teal-50/80 rounded-lg hover:bg-teal-100 transition-colors cursor-pointer font-medium"
+                >
+                  <Sparkles className="w-3 h-3 text-teal-600" />
+                  예시 19900620
+                </button>
+              )}
+            </div>
+          </div>
           <label
             htmlFor="birth-input"
-            className="block text-slate-500 text-[13px] sm:text-sm font-normal mb-1.5"
+            className="block text-slate-500 text-xs font-medium mb-2"
           >
             생년월일 8자리
           </label>
@@ -240,35 +253,37 @@ export default function App() {
               inputMode="numeric"
               pattern="[0-9]*"
               autoComplete="off"
+              aria-invalid={Boolean(validationError)}
+              aria-describedby={validationError ? 'birth-error' : 'birth-hint'}
               value={inputVal}
               onChange={(e) => setInputVal(e.target.value.replace(/\D/g, '').slice(0, 8))}
               placeholder="19900620"
-              className="w-full text-4xl sm:text-[42px] font-semibold text-slate-800 placeholder:text-slate-300 focus:outline-none bg-transparent tracking-[0.08em] py-1 tabular-nums"
+              className="birth-input w-full min-w-0 text-[34px] sm:text-[42px] font-semibold text-[#173F38] placeholder:text-slate-300 bg-[#F7F9F8] rounded-xl border border-slate-200/70 tracking-[0.06em] px-3 py-3 tabular-nums transition-colors"
             />
           </div>
 
-          {/* 입력창 바로 아래 첫 번째 라인 */}
-          <div className="h-px bg-slate-200 mt-2 mb-3"></div>
+          <p id="birth-hint" className="mt-2 text-[11px] text-slate-400">연도 4자리 · 월 2자리 · 일 2자리</p>
 
           {/* 오류 메시지 표시 */}
           {validationError && (
-            <div className="text-xs text-rose-500 font-medium mb-2 px-0.5">
+            <div id="birth-error" role="alert" className="text-xs text-rose-600 font-medium mt-2 px-0.5">
               ⚠️ {validationError}
             </div>
           )}
 
           {/* 두 번째 분리 라인 */}
-          <div className="h-px bg-slate-200/90 mb-4"></div>
+          <div className="h-px bg-slate-100 my-5"></div>
 
           {/* 기준일 영역 */}
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
+          <div className="flex flex-wrap items-center justify-between gap-3">
+            <div className="relative flex items-center gap-3">
               <span className="text-slate-600 text-sm font-medium">기준일</span>
-              <div className="relative">
+              <div>
                 <button
                   type="button"
                   onClick={() => setIsDatePickerOpen(!isDatePickerOpen)}
-                  className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg border border-slate-200 bg-white text-slate-700 text-sm font-medium hover:bg-slate-50 transition-colors shadow-2xs cursor-pointer"
+                  className="inline-flex items-center gap-1.5 px-2.5 py-2 rounded-lg border border-slate-200/80 bg-white text-slate-700 text-xs font-medium hover:bg-teal-50 transition-colors cursor-pointer"
+                  aria-expanded={isDatePickerOpen}
                   title="기준일 변경하기"
                 >
                   <Calendar className="w-3.5 h-3.5 text-slate-400" />
@@ -280,10 +295,11 @@ export default function App() {
 
                 {/* 기준일 변경 팝오버 */}
                 {isDatePickerOpen && (
-                  <div className="absolute left-0 top-full mt-1.5 z-20 w-64 bg-white rounded-xl shadow-lg border border-slate-200 p-3 text-xs animate-in fade-in zoom-in-95">
+                  <div className="absolute left-0 top-full mt-2 z-20 w-64 max-w-[calc(100vw-72px)] bg-white rounded-2xl shadow-xl border border-slate-200 p-3 text-xs">
                     <div className="font-semibold text-slate-700 mb-2">계약 기준일 설정</div>
                     <input
                       type="date"
+                      aria-label="계약 기준일"
                       value={`${refDate.getFullYear()}-${String(refDate.getMonth() + 1).padStart(2, '0')}-${String(refDate.getDate()).padStart(2, '0')}`}
                       onChange={handleCustomDateChange}
                       className="w-full px-2.5 py-1.5 border border-slate-200 rounded-lg text-slate-700 mb-2.5 focus:outline-teal-600"
@@ -332,26 +348,26 @@ export default function App() {
               </button>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* 두 번째 카드: 결과 카드 */}
-        <div className="bg-white rounded-2xl overflow-hidden shadow-[0_2px_8px_rgba(0,0,0,0.04)] border border-slate-100 mt-5 transition-all">
+        <section className="surface-card rounded-3xl overflow-hidden mt-4" aria-label="계산 결과" aria-live="polite" aria-atomic="true">
           {/* 민트 헤더 (보험나이) */}
-          <div className="bg-[#E7F3F1] px-6 py-4 flex items-center justify-between">
-            <span className="font-bold text-[#006257] text-base md:text-[17px] tracking-tight">
-              보험나이
-            </span>
+          <div className="result-heading px-5 sm:px-6 py-6 flex items-center justify-between gap-3">
+            <div>
+              <span className="mb-2 block text-[10px] font-semibold tracking-[0.15em] text-teal-200/80">YOUR INSURANCE AGE</span>
+              <h2 className="font-semibold text-white text-base tracking-tight">보험나이</h2>
+            </div>
 
             {calculation && calculation.isValid && calculation.insuranceAge !== null ? (
               <div className="flex items-baseline gap-1">
-                <span className="text-2xl md:text-[28px] font-extrabold text-[#006257] tabular-nums">
+                <span className="text-[44px] leading-none font-semibold tracking-tight text-white tabular-nums">
                   {calculation.insuranceAge}
                 </span>
-                <span className="text-base font-bold text-[#006257]">세</span>
+                <span className="text-base font-medium text-teal-100">세</span>
               </div>
             ) : (
-              /* 미입력 상태: 굵은 티얼 가로 바 (스크린샷과 동일) */
-              <span className="w-8 h-1.5 bg-[#006257] rounded-sm block"></span>
+              <span className="text-4xl font-light text-white/60" aria-label="생년월일 입력 대기">—</span>
             )}
           </div>
 
@@ -360,6 +376,7 @@ export default function App() {
             {/* 1. 상령일 */}
             <div className="px-6 py-4 flex items-center justify-between">
               <div className="flex items-center gap-1.5">
+                <Calendar className="h-4 w-4 mr-1 text-teal-600/70" aria-hidden="true" />
                 <span className="text-slate-600 text-sm font-medium">상령일</span>
               </div>
               <div>
@@ -390,7 +407,7 @@ export default function App() {
 
             {/* 2. 만 나이 */}
             <div className="px-6 py-4 flex items-center justify-between">
-              <span className="text-slate-600 text-sm font-medium">만 나이</span>
+              <span className="flex items-center gap-2.5 text-slate-600 text-sm font-medium"><Cake className="h-4 w-4 text-teal-600/70" aria-hidden="true" />만 나이</span>
               <div>
                 {calculation && calculation.isValid && calculation.internationalAge !== null ? (
                   <div className="text-slate-800 font-semibold text-sm sm:text-base tabular-nums">
@@ -409,7 +426,7 @@ export default function App() {
 
             {/* 3. 띠 */}
             <div className="px-6 py-4 flex items-center justify-between">
-              <span className="text-slate-600 text-sm font-medium">띠</span>
+              <span className="flex items-center gap-2.5 text-slate-600 text-sm font-medium"><Sparkles className="h-4 w-4 text-teal-600/70" aria-hidden="true" />띠</span>
               <div>
                 {calculation && calculation.isValid && calculation.zodiac ? (
                   <div className="text-slate-800 font-semibold text-sm sm:text-base">
@@ -424,7 +441,7 @@ export default function App() {
               </div>
             </div>
           </div>
-        </div>
+        </section>
 
         {/* 상령일 D-Day 알림 및 보험 팁 (계산 완료 시 표시) */}
         {calculation && calculation.isValid && (
@@ -471,16 +488,20 @@ export default function App() {
         )}
 
         {/* 하단 고지 문구 */}
-        <div className="mt-4 px-1 text-xs text-[#71828A] leading-relaxed">
+        <div className="mt-4 flex items-start gap-2 px-1 text-[11px] text-[#71828A] leading-relaxed">
+          <Info className="mt-0.5 h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+          <p>
           보험나이는 만 나이의 끝수가 6개월 이상이면 1년으로 올려 계산합니다. 띠는 출생 연도 기준입니다.
           입력한 번호는 저장하거나 전송하지 않습니다.
+          </p>
         </div>
 
         {/* 보험나이 상식 & 계산 공식 아코디언 */}
-        <div className="mt-6 pt-4 border-t border-slate-200/80">
+        <div className="mt-6 rounded-2xl border border-slate-200/70 bg-white/50 px-4 py-3">
           <button
             type="button"
             onClick={() => setShowFaq(!showFaq)}
+            aria-expanded={showFaq}
             className="w-full flex items-center justify-between text-xs font-medium text-slate-500 hover:text-slate-800 py-1 cursor-pointer transition-colors"
           >
             <span className="flex items-center gap-1.5">
@@ -518,11 +539,11 @@ export default function App() {
             </div>
           )}
         </div>
-      </div>
+      </main>
 
       {/* 푸터 */}
-      <footer className="w-full max-w-[480px] mx-auto text-center mt-6 text-[11px] text-slate-400">
-        안전한 브라우저 로컬 연산 · 개인정보 수집 없음
+      <footer className="w-full max-w-[520px] mx-auto flex items-center justify-center gap-1.5 mt-8 text-[10px] text-slate-400">
+        <ShieldCheck className="h-3.5 w-3.5" aria-hidden="true" /> 개인정보 수집 없이, 내 브라우저에서 안전하게
       </footer>
     </div>
   );

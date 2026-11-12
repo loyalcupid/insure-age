@@ -2,6 +2,54 @@
 
 @layer base {
   body {
+    margin: 0;
+    background: #f3f6f3;
     font-family: "Pretendard", -apple-system, BlinkMacSystemFont, system-ui, Roboto, "Helvetica Neue", "Segoe UI", "Apple SD Gothic Neo", "Noto Sans KR", "Malgun Gothic", sans-serif;
   }
+
+  button, a, input {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  :is(button, a, input):focus-visible {
+    outline: 2px solid #178272;
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: #cce8df;
+    color: #173f38;
+  }
+}
+
+.app-shell {
+  background: radial-gradient(ellipse at 50% 0%, #e4eee7 0%, transparent 55%), #f3f6f3;
+}
+
+.download-panel {
+  box-shadow: 0 4px 24px #173f3805;
+}
+
+.download-row + .download-row {
+  border-top: 1px solid #edf1ed;
+}
+
+.surface-card {
+  background: #fff;
+  border: 1px solid #e5ece7;
+  box-shadow: 0 4px 6px #173f3802, 0 14px 40px #173f3805;
+}
+
+.title-icon {
+  box-shadow: 0 5px 12px #124f461c, inset 0 1px 0 #ffffff20;
+}
+
+.birth-input:focus {
+  background: #fff;
+  border-color: #63a898;
+}
+
+.result-heading {
+  background: #174f45;
+  box-shadow: inset 0 1px 0 #ffffff12;
 }
