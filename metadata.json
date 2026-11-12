@@ -1,0 +1,8 @@
+{
+  "name": "보험나이 계산기",
+  "description": "생년월일과 기준일을 입력하여 보험나이, 상령일, 만 나이, 띠를 정확하게 계산하는 웹앱입니다.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
